@@ -15,7 +15,7 @@ class GoogleTasksBottomAppBarPage extends StatelessWidget {
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: new BottomAppBar(
-        hasNotch: false,
+        // hasNotch: false,
         child: new Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

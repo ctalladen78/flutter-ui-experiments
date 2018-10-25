@@ -9,6 +9,11 @@ import 'timepicker_component.dart';
 import 'staggered_tile.dart';
 import 'scoped_model.dart';
 import 'tab_examples.dart';
+import 'package:flutter_ui_experiments/map-ui-example.dart';
+import 'json-example.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'webview_example.dart';
+
 
 void main() {
   runApp(new MyApp());
@@ -34,6 +39,14 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/bottom_app_bar': (context) => new BottomAppBarPage(),
         '/bottom_app_bar_google': (context) => new GoogleTasksBottomAppBarPage(),
+        '/widget': (_) => new WebviewScaffold(
+              url: "https://www.youtube.com",
+              appBar: new AppBar(
+                title: const Text('Widget webview static'),
+              ),
+              withZoom: true,
+              withLocalStorage: true,
+            )
       },
       home: new Scaffold(
         // body: new ImageTileGridPage(),
@@ -45,9 +58,12 @@ class _MyAppState extends State<MyApp> {
             // new RoundedImageScreen(),
             new SliverSamplePage(title: "Sliver example"),
             // new BottomBarHomePage(),
-            new ImageTileGridPage(),
+            new MapScreen(),
+            // new ImageTileGridPage(),
+            new JsonPage(),
+            // new WebViewScreen(),
             new MyScopedModelWidget(), 
-            new MyTabs()
+            // new MyTabs()
           ],
         ),
         bottomNavigationBar: new BottomNavigationBar(

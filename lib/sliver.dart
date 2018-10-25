@@ -18,15 +18,19 @@ class _SliverSamplePageState extends State<SliverSamplePage> {
         // the App.build method, and use it to set our appbar title.
         title: new Text(widget.title),
       ),
+      // leading: new CircleAvatar(backgroundImage: new NetworkImage(profile)),
       body: new CustomScrollView(
         slivers: <Widget>[
           new SliverAppBar(
             pinned: true,
             expandedHeight: 250.0,
             flexibleSpace: new FlexibleSpaceBar(
-              background: new Image.network(
-                'http://freevectorsite.com/wp-content/uploads/2013/09/Creative-stock-vector-background.jpg',
-                fit: BoxFit.cover,
+              background: new Stack( children: <Widget>[
+                new Image.network(
+                  'http://freevectorsite.com/wp-content/uploads/2013/09/Creative-stock-vector-background.jpg',
+                  fit: BoxFit.cover),
+                new CircleAvatar(backgroundColor: Colors.amber),
+              ]
               ),
               title: const Text('Demo'),
             ),

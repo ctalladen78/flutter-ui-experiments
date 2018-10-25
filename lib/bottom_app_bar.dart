@@ -37,7 +37,7 @@ class BottomAppBarPage extends StatelessWidget {
         onPressed: () {},
       ),
       bottomNavigationBar: new BottomAppBar(
-        hasNotch: true,
+        // hasNotch: true,
         child: new Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
