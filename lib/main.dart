@@ -54,11 +54,11 @@ class _MyAppState extends State<MyApp> {
           controller: controller,
           onPageChanged: (index) => setState(() => _selectedIndex = index),
           children: <Widget>[
-            // new MyHomePage(title: 'Home'),
+            new MyDatePicker(title: 'Home'),
             // new RoundedImageScreen(),
             new SliverSamplePage(title: "Sliver example"),
             // new BottomBarHomePage(),
-            new MapScreen(),
+            // new MapScreen(),
             // new ImageTileGridPage(),
             new JsonPage(),
             // new WebViewScreen(),
@@ -104,8 +104,8 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyDatePicker extends StatelessWidget {
+  MyDatePicker({Key key, this.title}) : super(key: key);
 
   final String title;
 

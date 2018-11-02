@@ -23,6 +23,7 @@ class _DatePickerState extends State<DatePicker> {
           firstDate: new DateTime.now().add(new Duration(days: -20)),
           lastDate: new DateTime.now().add(new Duration(days: 300)),
         );
+        print("DATE SELECTED: $date");
 
         setState(() => _date = date);
       },

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'api_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SliverSamplePage extends StatefulWidget {
   SliverSamplePage({Key key, this.title}) : super(key: key);
@@ -9,7 +11,55 @@ class SliverSamplePage extends StatefulWidget {
   _SliverSamplePageState createState() => new _SliverSamplePageState();
 }
 
+// https://medium.com/@diegoveloper/flutter-collapsing-toolbar-sliver-app-bar-14b858e87abe
 class _SliverSamplePageState extends State<SliverSamplePage> {
+  ApiService apiService = new ApiService();
+
+  Widget _buildButtonRow() {
+    return Container(
+      // height: 20.0, 
+      // padding: EdgeInsets.all(10.0),
+      child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        _buildConnectButton(),
+        SizedBox(width: 10.0),
+        _buildMessageButton(),
+      ],),
+    );
+  }
+
+  Widget _buildConnectButton() {
+    return InputChip(
+      backgroundColor: Colors.greenAccent[200],
+      avatar: CircleAvatar(
+        radius: 50.0, 
+        backgroundColor: Colors.white70,
+        child: new Icon(Icons.add, size: 20.0, color: Colors.black87)
+      ),
+      label: new Text("Connect"),
+      onPressed: (){
+        Fluttertoast.showToast(msg: 'Added to connections',toastLength: Toast.LENGTH_SHORT);
+      },
+    );
+  }
+  Widget _buildMessageButton() {
+      return InputChip(
+        backgroundColor: Colors.orangeAccent[200],
+        avatar: CircleAvatar(
+                radius: 50.0, 
+                backgroundColor: Colors.white70,
+                child: new Icon(Icons.send, size: 15.0, color: Colors.black87,)
+              ),            // avatar: new Icon(Icons.send, size: 20.0,),
+        label: new Text("Message"),
+        labelStyle: TextStyle(fontSize: 12.0, color: Colors.black87),
+        // padding: EdgeInsets.all(10.0),
+        onPressed: (){
+              // TODO Navigate to chat screen with the user model sent as argument
+        },
+      );  
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -23,16 +73,26 @@ class _SliverSamplePageState extends State<SliverSamplePage> {
         slivers: <Widget>[
           new SliverAppBar(
             pinned: true,
+            floating: false, 
             expandedHeight: 250.0,
             flexibleSpace: new FlexibleSpaceBar(
               background: new Stack( children: <Widget>[
                 new Image.network(
-                  'http://freevectorsite.com/wp-content/uploads/2013/09/Creative-stock-vector-background.jpg',
+                  'https://picsum.photos/1400/935/?random',
                   fit: BoxFit.cover),
-                new CircleAvatar(backgroundColor: Colors.amber),
-              ]
-              ),
-              title: const Text('Demo'),
+                  new Center(child: new Column(children: <Widget>[
+                    new SizedBox(height: 30.0,),
+                    apiService.getUserImage(),
+                    new SizedBox(height: 20.0,),
+                    new Text("First Lastname", style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0
+                    ),)
+                ]),
+                )
+              ]),
+              // title: const Text('Demo'),
+              title: _buildButtonRow()
             ),
           ),
           new SliverGrid(
