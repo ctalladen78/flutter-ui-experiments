@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sqlite_listview_example/model/note.dart';
-import 'package:sqlite_listview_example/util/database_helper.dart';
+import 'package:flutter_ui_experiments/sqflite_example/model/note.dart';
+import 'package:flutter_ui_experiments/sqflite_example/util/database_helper.dart';
 
 class NoteScreen extends StatefulWidget {
   final Note note;

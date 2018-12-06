@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sqlite_listview_example/model/note.dart';
-import 'package:sqlite_listview_example/util/database_helper.dart';
-import 'package:sqlite_listview_example/ui/note_screen.dart';
+import 'package:flutter_ui_experiments/sqflite_example/model/note.dart';
+import 'package:flutter_ui_experiments/sqflite_example/util/database_helper.dart';
+import 'package:flutter_ui_experiments/sqflite_example/ui/note_screen.dart';
 
 class ListViewNote extends StatefulWidget {
   @override
@@ -17,6 +17,7 @@ class _ListViewNoteState extends State<ListViewNote> {
     super.initState();
 
     db.getAllNotes().then((notes) {
+      print(notes);
       setState(() {
         notes.forEach((note) {
           items.add(Note.fromMap(note));

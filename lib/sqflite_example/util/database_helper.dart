@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:sqlite_listview_example/model/note.dart';
+import 'package:flutter_ui_experiments/sqflite_example/model/note.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = new DatabaseHelper.internal();

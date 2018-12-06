@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'extended_text_field.dart';
 import 'rounded_image.dart';
-import 'bottom_app_bar.dart';
-import 'google_tasks_bottom_bar.dart';
 import 'sliver.dart';
 import 'datepicker_component.dart';
 import 'timepicker_component.dart';
@@ -11,9 +9,11 @@ import 'scoped_model.dart';
 import 'tab_examples.dart';
 import 'package:flutter_ui_experiments/map-ui-example.dart';
 import 'json-example.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'webview_example.dart';
-
+import 'package:flutter_ui_experiments/sqflite_example/ui/listview_note.dart';
+import 'routes.dart';
+import 'form_wizard.dart';
+import 'form_wizard_model.dart';
+import 'textfield_demo.dart';
 
 void main() {
   runApp(new MyApp());
@@ -36,32 +36,24 @@ class _MyAppState extends State<MyApp> {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: {
-        '/bottom_app_bar': (context) => new BottomAppBarPage(),
-        '/bottom_app_bar_google': (context) => new GoogleTasksBottomAppBarPage(),
-        '/widget': (_) => new WebviewScaffold(
-              url: "https://www.youtube.com",
-              appBar: new AppBar(
-                title: const Text('Widget webview static'),
-              ),
-              withZoom: true,
-              withLocalStorage: true,
-            )
-      },
+      routes: new Routes(context).routes,
       home: new Scaffold(
         // body: new ImageTileGridPage(),
         body: new PageView(
           controller: controller,
           onPageChanged: (index) => setState(() => _selectedIndex = index),
           children: <Widget>[
-            new MyDatePicker(title: 'Home'),
+            // new MyDatePicker(title: 'Home'),
             // new RoundedImageScreen(),
-            new SliverSamplePage(title: "Sliver example"),
+            // new SliverSamplePage(title: "Sliver example"),
             // new BottomBarHomePage(),
             // new MapScreen(),
             // new ImageTileGridPage(),
-            new JsonPage(),
+            // new JsonPage(),
             // new WebViewScreen(),
+            VerticalForm(),
+            TextFieldDemo(),
+            ListViewNote(),
             new MyScopedModelWidget(), 
             // new MyTabs()
           ],

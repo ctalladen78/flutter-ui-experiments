@@ -83,6 +83,7 @@ class _SliverSamplePageState extends State<SliverSamplePage> {
                   new Center(child: new Column(children: <Widget>[
                     new SizedBox(height: 30.0,),
                     apiService.getUserImage(),
+                    // ApiService().getUserImage(),
                     new SizedBox(height: 20.0,),
                     new Text("First Lastname", style: TextStyle(
                       color: Colors.white,
