@@ -21,7 +21,7 @@ class _VerticalFormState extends State<VerticalForm> {
   TextEditingController controller3 = new TextEditingController();
   GlobalKey<FormState> formKey1 = new GlobalKey<FormState>();
   var data = {};
-  int currentNode = 0; // TODO use modulus operator (currentNode % list.length)
+  int currentNode = 1; // TODO use modulus operator (currentNode % list.length)
   List<FocusNode> nodeList;
 
   @override
@@ -84,6 +84,14 @@ class _VerticalFormState extends State<VerticalForm> {
     );
   }
 
+  void toNext(){
+    setState(() {
+                    currentNode = currentNode % nodeList.length;
+                    FocusScope.of(context).requestFocus(nodeList[currentNode]);
+                    currentNode++;
+                  });
+  }
+
   @override
   Widget build(BuildContext context) {
     // focusNode1.addListener(listener)
@@ -95,8 +103,11 @@ class _VerticalFormState extends State<VerticalForm> {
           key: formKey1,
           child: new Column(
             children: <Widget>[
+              SizedBox(height: 100.0,),
+              Text("Tell me about yourself, Mr. Anderson"),
+              SizedBox(height: 50.0,),
               _buildTextFormField(
-                ctrl: controller1,
+                // ctrl: controller1,
                 // decoration: InputDecoration(labelText: "Go to next"),
                 hintText: 'Controller 1',
                keyboardAction: TextInputAction.next,
@@ -108,8 +119,15 @@ class _VerticalFormState extends State<VerticalForm> {
                  FocusScope.of(context).requestFocus(focusNode2);
                },
               ),
+              MaterialButton(
+                child: Text("NEXT"),
+                onPressed: toNext,
+              ),
+              SizedBox(height: 100.0,),
+              Text("Do you wish to take the red pill, or the blue pill?"),
+              SizedBox(height: 50.0,),
               _buildTextFormField(
-                ctrl: controller2,
+                // ctrl: controller2,
                 hintText: 'Controller 2',
                keyboardAction: TextInputAction.next,
                 // keyboardAction: TextInputAction.unspecified,
@@ -118,6 +136,13 @@ class _VerticalFormState extends State<VerticalForm> {
                  FocusScope.of(context).requestFocus(focusNode3);
                },
               ),
+              MaterialButton(
+                child: Text("NEXT"),
+                onPressed: toNext,
+              ),
+              SizedBox(height: 100.0,),
+              Text("Do you wish to take the red pill, or the blue pill?"),
+              SizedBox(height: 50.0,),
               _buildTextFormField(
                 hintText: 'Done',
                 keyboardAction: TextInputAction.done,
@@ -126,6 +151,10 @@ class _VerticalFormState extends State<VerticalForm> {
                   print('Handling first name submission');
                   FocusScope.of(context).requestFocus(focusNode4);
                 },
+              ),
+              MaterialButton(
+                child: Text("NEXT"),
+                onPressed: toNext,
               ),
               _buildTextFormField(
                 hintText: 'Go',
@@ -137,19 +166,20 @@ class _VerticalFormState extends State<VerticalForm> {
                 },
               ),
               TextFormField(
+                keyboardType: TextInputType.multiline,
                 focusNode: focusNode5,
-                decoration: InputDecoration(icon: Icon(Icons.ac_unit), hintText: "Last Field"),
-                controller: TextEditingController(),
+                decoration: InputDecoration(icon: Icon(Icons.ac_unit), hintText: "First Name"),
+                controller: controller1,
                 onSaved: (formData){
                   print("field ${formData}");
                 },
-
               ),
               TextFormField(
+                keyboardType: TextInputType.multiline,
                 focusNode: focusNode6,
-                decoration: InputDecoration(icon: Icon(Icons.ac_unit), hintText: "Last Field"),
+                decoration: InputDecoration(icon: Icon(Icons.ac_unit), hintText: "Last Name"),
                 // keyboardType: TextInputType.text,
-                controller: TextEditingController(),  // required but not really needed for data
+                controller: controller2,  // required but not really needed for data
                 onSaved: (fieldData){
                   String c1 = controller1.text; 
                   String c2 = controller2.text;
@@ -160,7 +190,6 @@ class _VerticalFormState extends State<VerticalForm> {
                   print("TOTAL DATA ${data}");
                   print("FIELD DATA ${fieldData}"); // TODO this will fire when formState.save() is called
                 },
-
               ),
               MaterialButton(
                 color: Colors.blueAccent[300],
@@ -173,21 +202,11 @@ class _VerticalFormState extends State<VerticalForm> {
                   // TODO here we are using a simple map primitive
                   // onSavedAllFields(data);
                   controller1.clear();
+                  controller2.clear();
                   // print('TEXT FIELD 1 SAVED ${c1} ${c2}');
                 },
               ),
-              MaterialButton(
-                child: Text("NEXT"),
-                onPressed: (){ // TODO cycle through form fields
-                  setState(() {
-                    currentNode = currentNode % nodeList.length;
-                    FocusScope.of(context).requestFocus(nodeList[currentNode]);
-                    currentNode++;
-                  });
-                  // int nextNode
-                  // FocusNode nextNode = list[nextNode];
-                },
-              ),
+              
             ],
           ),
         ),
