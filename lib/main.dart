@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
       routes: new Routes(context).routes,
       home: new Scaffold(
         // body: new ImageTileGridPage(),
+        // body: TabBarView(
         body: new PageView(
           controller: controller,
           onPageChanged: (index) => setState(() => _selectedIndex = index),
