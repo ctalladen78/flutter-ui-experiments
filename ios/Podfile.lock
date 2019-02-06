@@ -7,6 +7,8 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - location (0.0.1):
+    - Flutter
   - path_provider (0.0.1):
     - Flutter
   - sqflite (0.0.1):
@@ -17,6 +19,7 @@ DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
   - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
@@ -31,6 +34,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_webview_plugin/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   sqflite:
@@ -41,6 +46,7 @@ SPEC CHECKSUMS:
   flutter_webview_plugin: 116575b48572029304775b768e9f15ebfc316274
   fluttertoast: ad0527b15297baf11349f3f581dae4d40f24f340
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  location: 26c90953ad5916331d0d1d913898779910416487
   path_provider: 09407919825bfe3c2deae39453b7a5b44f467873
   sqflite: 801b6b0983f722fa29baf00d1476e4556ada6de4
 

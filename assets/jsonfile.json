@@ -45,5 +45,95 @@
             "profile" : "https://randomuser.me/api/portraits/women/94.jpg",
             "id" : 789
         }
+    },
+    "places":{
+        "a1":{
+            "placeId1":{
+                "timestamp": "123123",
+                "city": "Budapest",
+                "arrivalDate" : "date",
+                "duration" : 30
+            }
+        }
+    },
+    "trips":{
+        "a1":{
+            "tripId1":{
+                "timestamp": "123123",
+                "city": "Budapest",
+                "arrivalDate" : "date",
+                "duration" : 30,
+                "members":{
+                    "tripId1-member1":"a1",
+                    "tripId1-member2":"a2",
+                    "tripId1-member3":"a3"
+                }
+            }
+        }
+    },
+    "invitation":{
+        "ai":{
+            "invitations":{
+                "invitationId1":{
+                    "inviter":"a1",
+                    "invitees":{
+                        "a2": false,
+                        "a3": false
+                    }
+                }
+            }
+        }
+    },
+    "offers":{
+        "a1":{
+            "offerId1" : {
+                "timestamp": "123123",
+                "paymentId" : "12312",
+                "tripId" : "tripId1",
+                "amount" : 99.9,
+                "userIdFrom" : "a1",
+                "userIdTo" : "a2"
+            }
+        }
+    },
+    "messages":{
+        "a1":{
+            "conversationId1":{
+                "timestamp" : "123123",
+                "tripId" : "tripId1",
+                "contents": {
+                    "contentId1" : {
+                        "type": 0,
+                        "text": "lorem ipsum dolor est",
+                        "imageUrl":"gs:uri/path/to",
+                        "userIdFrom":"a1",
+                        "userIdTo" :"a2"
+                    },
+                    "contentId2" : {
+                        "type": 0,
+                        "text": "lorem ipsum dolor est",
+                        "imageUrl":"gs:uri/path/to",
+                        "userIdFrom":"a1",
+                        "userIdTo" :"a2"
+                    },
+                    "contentId3" : {
+                        "type": 0,
+                        "text": "lorem ipsum dolor est",
+                        "imageUrl":"gs:uri/path/to",
+                        "userIdFrom":"a1",
+                        "userIdTo" :"a2"
+                    }
+                }
+            }
+        }
+    },
+    "reviews":{
+        "a1":{
+            "reviewId1":{
+                "timestamp": "123123",
+                "tripId": "tripId1"
+            }
+        }
+
     }
 }

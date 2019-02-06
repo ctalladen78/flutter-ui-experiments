@@ -60,6 +60,30 @@ class _SliverSamplePageState extends State<SliverSamplePage> {
       );  
   }
 
+  Widget _getBackgroundCover() {
+    Widget cover = new Image.network(
+                  'https://picsum.photos/1400/935/?random', // TODO how to handle error no connection
+                  fit: BoxFit.cover);
+    if(cover == null){ 
+      print("NULL cover");
+      return Image(color: Colors.greenAccent[300],);
+    }
+    print("cover not null");
+    return cover;
+  }
+
+  Widget _buildMapSection() {
+    // map section
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Container(
+        height: 200,
+        width: MediaQuery.of(context).size.width,
+        child: apiService.buildStaticMap(latitude: "testLat", longitude: "testLong", width: 300, height: 200),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -74,12 +98,10 @@ class _SliverSamplePageState extends State<SliverSamplePage> {
           new SliverAppBar(
             pinned: true,
             floating: false, 
-            expandedHeight: 250.0,
+            expandedHeight: 450.0,
             flexibleSpace: new FlexibleSpaceBar(
               background: new Stack( children: <Widget>[
-                new Image.network(
-                  'https://picsum.photos/1400/935/?random',
-                  fit: BoxFit.cover),
+                _getBackgroundCover(),
                   new Center(child: new Column(children: <Widget>[
                     new SizedBox(height: 30.0,),
                     apiService.getUserImage(),
@@ -88,7 +110,8 @@ class _SliverSamplePageState extends State<SliverSamplePage> {
                     new Text("First Lastname", style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0
-                    ),)
+                    ),),
+                    _buildMapSection()
                 ]),
                 )
               ]),

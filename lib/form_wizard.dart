@@ -257,6 +257,7 @@ class _VerticalFormState extends State<VerticalForm> {
             SizedBox(width: 100.0,)
           ],
         ),
+        // new Expanded(child: new TextFormField())
         // new IconButton(icon: new Icon(Icons.timer), onPressed: () => {}),
         // new IconButton(icon: new Icon(Icons.people), onPressed: () => {}),
         // new IconButton(icon: new Icon(Icons.map), onPressed: () => {}),
@@ -266,15 +267,13 @@ class _VerticalFormState extends State<VerticalForm> {
 }
 
 class NextButton extends StatefulWidget {
-    Function closure;
 
-  NextButton({Key key , Function func}) : super(key: key);
+  NextButton({Key key }) : super(key: key);
 
   _NextButtonState createState() => _NextButtonState();
 }
 
 class _NextButtonState extends State<NextButton> {
-  Function closure;
   // _NextButtonState(Function f){closure = f};
   bool isVisible;
   @override
@@ -284,6 +283,9 @@ class _NextButtonState extends State<NextButton> {
     }
   @override
   Widget build(BuildContext context) {
-    return (isVisible) ? Container() : Container();
+    return (isVisible) ? RaisedButton(
+      color: Colors.amberAccent[300],
+      onPressed: (){},
+    ) : Container();
   }
 }
