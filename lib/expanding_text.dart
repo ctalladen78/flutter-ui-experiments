@@ -29,8 +29,8 @@ class _ExpandingTextState extends State<ExpandingText>
   
   Future<List<Trip>> getTripsList({userId: String}) async {
     var header = {
-      "X-Parse-Application-Id":"yi5xfRZojERouKNKblwVqiTtEqUSSpdiJAAqBmYb",
-      "X-Parse-REST-API-Key":"HHbC9ZNDAsl7uwJH4RvH4tEPkJOHkDCmfns6oFV7",
+      "X-Parse-Application-Id":"",
+      "X-Parse-REST-API-Key":"",
     };
     String PARSE_URI = "https://parseapi.back4app.com/";
     var options = Options(headers: header);
@@ -67,30 +67,6 @@ class _ExpandingTextState extends State<ExpandingText>
   }
 }
 
-/**
-  AnimatedContainer(
-    duraton: Duration(millisecodns: 500),
-    height: _height, // expand during setstate
-    width: _width,
-    oclor: Colors.gereen,
-    child: Row(
-      children: Widgets[
-        Text(CONTENTS), // show rest of content
-        GestureDetector(
-          child: text("read more"),
-          onTap: (){
-            // load longer text
-            setState((){
-              CONTENTS = "longer versoin of text";
-              
-            });
-          }
-        )
-      ]
-    )
-  )
-
-  */
 class TripItem extends StatefulWidget {
   final Trip trip;
 
@@ -100,26 +76,33 @@ class TripItem extends StatefulWidget {
 }
 
 class _TripItemState extends State<TripItem> {
-  var CONTENTS = "shorter version of text";
+  var CONTENT = "shorter version of text";
+  var CONTENT2 = "longer version of text longer version of text longer version of text longer version of text longer version of text longer version of text longer version of text longer version of text";
+  var _height = 60.0;
+  swap({stringA : String, stringB : String}){
+
+  }
+
+  // https://stackoverflow.com/questions/46625105/can-an-animatedcontainer-animate-its-height
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      // child: widget.trip,
-      duration: Duration(milliseconds: 500),
-      height: 300.0, // expand during setstate
-      width: 200.0,
+      // curve: Curves.linear,
+      margin: EdgeInsets.only(top: 10.0),
+      duration: Duration(milliseconds: 1),
+      height: _height, // expand during setstate
+      width: 100.0,
       color: Colors.green,
-      child: Row(
+      child: Column(
         children: <Widget>[
-          Text(CONTENTS), // show rest of content
           GestureDetector(
-            child: Text("read more"),
+            child: Text(CONTENT),
             onTap: (){
-              // load longer text
               setState((){
-                CONTENTS = "longer version of text";
-                  
+                _height = 100;
+                CONTENT = CONTENT2;
               });
+              
             }
           )
         ]
