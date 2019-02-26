@@ -20,7 +20,7 @@ import 'parse_signup.dart';
 import 'websocket_example.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
-
+import 'expanding_text.dart';
 
 
 void main() {
@@ -58,18 +58,19 @@ class _MyAppState extends State<MyApp> {
           children: <Widget>[
             // new MyDatePicker(title: 'Home'),
             // new RoundedImageScreen(),
-            new SliverSamplePage(title: "Sliver example"),
+            // new SliverSamplePage(title: "Sliver example"),
             // new BottomBarHomePage(),
             // new MapScreen(),
             // new ImageTileGridPage(),
-            new JsonPage(),
+            // new JsonPage(),
             // new WebViewScreen(),
             // ProfileTabScreen(),
             // ParseSignIn(),
             // ParseSignUp(),
             // WebsocketExample(title:"websockets", channel: IOWebSocketChannel.connect('ws://echo.websocket.org')),
-            PrivateProfile(),
-            VerticalForm(),
+            // PrivateProfile(),
+            // VerticalForm(),
+            ExpandingText("teststststteststststteststststteststststteststststteststststteststststtestststst")
             // TextFieldDemo(),
             // ListViewNote(),
             // new MyScopedModelWidget(), 
